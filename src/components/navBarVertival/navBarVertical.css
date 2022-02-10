@@ -1,0 +1,46 @@
+.nav-vertical {
+    height: 100%;
+    width: 110px;
+    background-color: black;
+}
+
+.dot {
+    padding-top: 20px;
+}
+
+.dot ul {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.dot ul li {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    list-style: none;
+    margin: 5px;
+}
+
+.dot ul li:nth-child(2) {
+    background-color: yellow;
+}
+
+.dot ul li:nth-child(3) {
+    background-color: green;
+    margin-bottom: 20px;
+}
+
+.icon-folder,
+.icon-edit,
+.icon-setting {
+    margin-top: 30px;
+    text-align: center;
+    cursor: pointer;
+}

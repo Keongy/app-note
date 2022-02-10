@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import DisplayNote from './components/displayNote';
+import Edit from './components/edit';
+import Error from './components/error';
+import LeftSide from './components/leftSide';
+import Main from './components/main';
+import './index.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='global-container'>
+      <div className="container-left">
+        <LeftSide />
+      </div>
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/editer' element={<Edit />} />
+        <Route path='/note/id' element={<DisplayNote />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
     </div>
   );
 }

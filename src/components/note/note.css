@@ -1,0 +1,37 @@
+.note {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 20px 10px;
+}
+
+.note:hover {
+    background-color: rgb(148, 148, 148);
+}
+
+.note-infos {
+    color: black;
+}
+
+.note-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.note-icons-delete,
+.note-icons-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.note-icons-delete {
+    margin-bottom: 5px;
+}
+
+.note-icons-edit {
+    width: 32px;
+    padding-left: 2px;
+}

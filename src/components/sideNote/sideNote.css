@@ -1,0 +1,21 @@
+.side-note {
+    padding-top: 20px;
+}
+
+.side-note-title {
+    width: 350px;
+    text-align: center;
+}
+
+.side-note-body {
+    margin-top: 20px;
+}
+
+.side-note-body input {
+    width: 100%;
+    padding: 20px;
+}
+
+.side-note-body ul li {
+    list-style: none;
+}

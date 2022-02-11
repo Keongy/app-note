@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/editer' element={<Edit />} />
-        <Route path='/note/id' element={<DisplayNote />} />
+        <Route path='/note/:id' element={<DisplayNote />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </div>

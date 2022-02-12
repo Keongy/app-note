@@ -4,6 +4,10 @@
     background-color: black;
 }
 
+.nav-vertical a {
+    color: white;
+}
+
 .dot {
     padding-top: 20px;
 }

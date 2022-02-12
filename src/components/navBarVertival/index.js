@@ -2,10 +2,9 @@ import React from 'react';
 import './navBarVertical.css'
 import { AiOutlineFolderOpen, AiOutlineSetting } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NavBarVertical = () => {
-    const navigate = useNavigate()
     return (
         <div className="nav-vertical">
             <div className="dot">
@@ -15,15 +14,17 @@ const NavBarVertical = () => {
                     <li></li>
                 </ul>
             </div>
-            <div className="icon-folder" onClick={() => navigate('/')}>
-                <AiOutlineFolderOpen size="2.5em" />
-            </div>
-            <div className="icon-edit" onClick={() => navigate('/editer')}>
-                <FiEdit size="2.5em" />
-            </div>
-            <div className="icon-setting" onClick={() => navigate('/reglage')}>
-                <AiOutlineSetting size="2.5em" />
-            </div>
+            <ul>
+                <li className="icon-folder">
+                    <Link to='/'><AiOutlineFolderOpen size="2.5em" /></Link>
+                </li>
+                <li className="icon-edit">
+                    <Link to='/editer'><FiEdit size="2.5em" /></Link>
+                </li>
+                <li className="icon-setting">
+                    <Link to='/reglages'><AiOutlineSetting size="2.5em" /></Link>
+                </li>
+            </ul>
         </div>
     );
 };

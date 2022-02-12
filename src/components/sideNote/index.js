@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Note from '../note';
 import './sideNote.css'
@@ -7,8 +7,20 @@ import './sideNote.css'
 const SideNote = () => {
     const navigate = useNavigate()
     const notes = useSelector(state => state.note)
+    const [notesList, setNotesList] = useState(notes)
+
+    useEffect(() => {
+        setNotesList(notes)
+    }, [notes])
 
 
+
+    const handleFilter = e => {
+        const stateCopy = [...notes]
+        const search = stateCopy.filter(item => item.title.toLowerCase().includes(e.target.value.toLowerCase()))
+
+        setNotesList(search)
+    }
 
     return (
         <div className="side-note">
@@ -16,9 +28,9 @@ const SideNote = () => {
                 <h1>Mes Notes</h1>
             </div>
             <div className="side-note-body">
-                <input type="text" placeholder='Rechercher' />
+                <input type="text" placeholder='Rechercher' onChange={handleFilter} />
                 <ul>
-                    {notes.map(item => {
+                    {notesList.map(item => {
                         return <li key={item.id} onClick={() => navigate(`/note/${item.id}`)}>
                             <Note
                                 title={item.title}

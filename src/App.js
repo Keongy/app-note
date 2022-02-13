@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/editer' element={<Edit />} />
+        <Route path='/editer/:id' element={<Edit />} />
         <Route path='/reglages' element={<Setting />} />
         <Route path='/note/:id' element={<DisplayNote />} />
         <Route path='*' element={<Error />} />

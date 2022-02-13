@@ -23,7 +23,6 @@ const INITIAL_STATE = {
     ]
 }
 
-
 export default function noteReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case "ADDNOTE":
@@ -35,7 +34,11 @@ export default function noteReducer(state = INITIAL_STATE, action) {
                 note: newNote
             }
         case "UPDATENOTE":
-            return {}
+            const updatedNote = [...state.note]
+            updatedNote[action.index] = action.payload
+            return {
+                note: updatedNote
+            }
         case "DELETENOTE":
             const deleteNote = [...state.note]
             const index = deleteNote.findIndex(obj => obj.id === action.id)

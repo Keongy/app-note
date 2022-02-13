@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import './edit.css'
 
 const Edit = () => {
@@ -11,6 +12,26 @@ const Edit = () => {
     }
     const [newNote, setNewNote] = useState(initialNote)
     const dispatch = useDispatch()
+    const param = useParams()
+    const notes = useSelector(state => state.note)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setNewNote(initialNote)
+
+        console.log(param)
+        if (param.id) {
+            const index = [...notes].findIndex(obj => obj.id === param.id)
+            if (index !== -1) {
+                const note = notes[index]
+                setNewNote(note)
+            } else {
+                navigate('/')
+            }
+        }
+
+    }, [param])
+
 
 
 
@@ -40,14 +61,27 @@ const Edit = () => {
 
     const submitNote = (e) => {
         e.preventDefault()
-        if (newNote.title !== '' && newNote.subtitle !== '' && newNote.message !== '') {
+
+        if (newNote.title === '' || newNote.subtitle === '' || newNote.message === '') {
+            alert("Champs vides !")
+            return
+        }
+
+        if (param.id) {
+            const index = [...notes].findIndex(obj => obj.id === param.id)
+            dispatch({
+                type: 'UPDATENOTE',
+                payload: newNote,
+                index: index
+            })
+            navigate('/')
+        } else {
             dispatch({
                 type: 'ADDNOTE',
                 payload: newNote
             })
             setNewNote(initialNote)
-        } else {
-            alert("Champs vides !")
+            navigate('/')
         }
     }
 

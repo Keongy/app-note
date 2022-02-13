@@ -13,8 +13,6 @@ const SideNote = () => {
         setNotesList(notes)
     }, [notes])
 
-
-
     const handleFilter = e => {
         const stateCopy = [...notes]
         const search = stateCopy.filter(item => item.title.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -31,7 +29,7 @@ const SideNote = () => {
                 <input type="text" placeholder='Rechercher' onChange={handleFilter} />
                 <ul>
                     {notesList.map(item => {
-                        return <li key={item.id} onClick={() => navigate(`/note/${item.id}`)}>
+                        return <li key={item.id} >
                             <Note
                                 title={item.title}
                                 subtitle={item.subtitle}

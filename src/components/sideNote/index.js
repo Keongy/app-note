@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Note from '../note';
 import './sideNote.css'
 
 const SideNote = () => {
-    const navigate = useNavigate()
     const notes = useSelector(state => state.note)
     const [notesList, setNotesList] = useState(notes)
 

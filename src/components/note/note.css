@@ -4,6 +4,7 @@
     cursor: pointer;
 }
 
+.note-selected,
 .note:hover {
     background-color: rgb(148, 148, 148);
 }

@@ -3,10 +3,14 @@ import { TiDelete } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Note = ({ title, subtitle, id }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [selected, setSelected] = useState('')
+
+
 
 
     const handleDelete = () => {
@@ -21,8 +25,8 @@ const Note = ({ title, subtitle, id }) => {
     }
 
     return (
-        <div className='note'>
-            <div className="note-infos" onClick={() => navigate(`/note/${id}`)}>
+        <div className={`note ${selected}`}>
+            <div className={`note-infos `} onClick={() => navigate(`/note/${id}`)}>
                 <h2>{title}</h2>
                 <p>{subtitle}</p>
             </div>

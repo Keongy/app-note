@@ -3,30 +3,43 @@ import { TiDelete } from "react-icons/ti";
 import { FiEdit } from "react-icons/fi";
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Note = ({ title, subtitle, id }) => {
+const Note = ({ title, subtitle, uid, selected }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [selected, setSelected] = useState('')
+    const [noteSelected, setNoteSelected] = useState('')
 
+
+
+    useEffect(() => {
+        if (uid === selected) {
+            setNoteSelected('note-selected')
+        } else {
+            setNoteSelected('')
+        }
+    }, [selected, uid])
 
 
 
     const handleDelete = () => {
         dispatch({
             type: 'DELETENOTE',
-            id: id
+            id: uid
         })
     }
 
     const handleModifyNote = () => {
-        navigate(`/editer/${id}`)
+        navigate(`/editer/${uid}`)
+    }
+
+    const handleClick = () => {
+        navigate(`/note/${uid}`)
     }
 
     return (
-        <div className={`note ${selected}`}>
-            <div className={`note-infos `} onClick={() => navigate(`/note/${id}`)}>
+        <div className={`note ${noteSelected}`}>
+            <div className={`note-infos `} onClick={handleClick}>
                 <h2>{title}</h2>
                 <p>{subtitle}</p>
             </div>

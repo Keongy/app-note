@@ -4,18 +4,24 @@ import Note from '../note';
 import './sideNote.css'
 
 const SideNote = () => {
-    const notes = useSelector(state => state.note)
-    const [notesList, setNotesList] = useState(notes)
+    const { note } = useSelector(state => state)
+    const [notesList, setNotesList] = useState(note)
+    const [selected, setSelected] = useState('')
+
 
     useEffect(() => {
-        setNotesList(notes)
-    }, [notes])
+        setNotesList(note)
+    }, [note])
 
     const handleFilter = e => {
-        const stateCopy = [...notes]
+        const stateCopy = [...note]
         const search = stateCopy.filter(item => item.title.toLowerCase().includes(e.target.value.toLowerCase()))
 
         setNotesList(search)
+    }
+
+    const handleClick = (props) => {
+        setSelected(props)
     }
 
     return (
@@ -27,11 +33,15 @@ const SideNote = () => {
                 <input type="text" placeholder='Rechercher' onChange={handleFilter} />
                 <ul>
                     {notesList.map(item => {
-                        return <li key={item.id} >
+                        return <li
+                            key={item.id}
+                            onClick={() => handleClick(item.id)}
+                        >
                             <Note
                                 title={item.title}
                                 subtitle={item.subtitle}
-                                id={item.id}
+                                uid={item.id}
+                                selected={selected}
                             />
                         </li>
                     })}

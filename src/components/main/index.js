@@ -4,15 +4,15 @@ import Card from '../card';
 import './main.css'
 
 const Main = () => {
-    const notes = useSelector(state => state.note)
+    const { note } = useSelector(state => state)
     return (
         <div className='container'>
             <div className="main-title">
                 <h1>Vos notes</h1>
             </div>
             <div className="main-body">
-                {notes.length ?
-                    notes.map((note, index) => {
+                {note.length ?
+                    note.map((note, index) => {
                         return <Card
                             key={index}
                             title={note.title}
@@ -24,7 +24,6 @@ const Main = () => {
                     :
                     <h1>Vous n'avez aucune note !</h1>
                 }
-
             </div>
         </div>
     );

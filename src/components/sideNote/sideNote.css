@@ -19,3 +19,7 @@
 .side-note-body ul li {
     list-style: none;
 }
+
+.red {
+    border: 3px solid red;
+}

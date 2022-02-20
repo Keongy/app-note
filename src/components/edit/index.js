@@ -13,26 +13,21 @@ const Edit = () => {
     const [newNote, setNewNote] = useState(initialNote)
     const dispatch = useDispatch()
     const param = useParams()
-    const notes = useSelector(state => state.note)
+    const { note } = useSelector(state => state)
     const navigate = useNavigate()
 
     useEffect(() => {
         setNewNote(initialNote)
-
-        console.log(param)
         if (param.id) {
-            const index = [...notes].findIndex(obj => obj.id === param.id)
+            const index = [...note].findIndex(obj => obj.id === param.id)
             if (index !== -1) {
-                const note = notes[index]
-                setNewNote(note)
+                const notes = note[index]
+                setNewNote(notes)
             } else {
                 navigate('/')
             }
         }
-
     }, [param])
-
-
 
 
     const handleChange = (e, input) => {
@@ -68,7 +63,7 @@ const Edit = () => {
         }
 
         if (param.id) {
-            const index = [...notes].findIndex(obj => obj.id === param.id)
+            const index = [...note].findIndex(obj => obj.id === param.id)
             dispatch({
                 type: 'UPDATENOTE',
                 payload: newNote,

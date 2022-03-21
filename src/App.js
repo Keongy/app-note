@@ -19,7 +19,7 @@ function App() {
         <Route path='/editer/:id' element={<Edit />} />
         <Route path='/reglages' element={<Setting />} />
         <Route path='/note/:id' element={<DisplayNote />} />
-        <Route path='*' element={<Error />} />
+        <Route path='*' element={<Main />} />
       </Routes>
     </div>
   );

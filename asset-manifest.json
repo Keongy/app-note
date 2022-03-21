@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/app-note/static/css/main.aea80082.css",
+    "main.js": "/app-note/static/js/main.86b5e54f.js",
+    "index.html": "/app-note/index.html",
+    "main.aea80082.css.map": "/app-note/static/css/main.aea80082.css.map",
+    "main.86b5e54f.js.map": "/app-note/static/js/main.86b5e54f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aea80082.css",
+    "static/js/main.86b5e54f.js"
+  ]
+}
